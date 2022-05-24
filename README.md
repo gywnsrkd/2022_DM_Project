@@ -24,7 +24,10 @@ EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
 
 -> Regression을 이용해 가정생활폐기물 양에 많은 영향을 주는 요인을 분석하고 이를 줄이기 위한 방안 제시, 폐기물 양 예측 모델을 통해 다음해 양 예측, 줄이기 위한 제도 제안
 
+
+
 ### 데이터 수집
+
 #### 선행 연구
 
 정성영·배수호, 2018,  ‘지방공공서비스의 효율성 및 영향요인 분석: 생활페기물 처리서비스를 중심으로’, 정책분석평가학회보, 28(2), 55-92
@@ -46,6 +49,31 @@ EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
 * 도소매업 종사자 수: **도소매업 종사자**가 많은 지역에서 쓰레기 배출량이 많을 것
 * 숙박 및 음식점 종사자 수: **숙박 및 음식점 종사자 수**(유동인구 및 거주 인구 많음)가 많은 지역에서 쓰레기 배출량이 많을 것
 
+#### 데이터 수집
+* [서울시 인구수 통계] <https://data.seoul.go.kr/dataList/419/S/2/datasetView.do> 
+-> 서울시 구별 인구 합계, 한국인/외국인, 남자/여자 수 
+* [서울시 흡연율] <https://data.seoul.go.kr/dataList/10668/S/2/datasetView.do>
+-> 남녀 흡연비율 합계로 서울시 구별 흡연율 추출
+* [서울시 주요 관광지점 입장객(자치구별) 통계] <https://data.seoul.go.kr/dataList/10668/S/2/datasetView.do>
+-> 관광지별 관광객 수 추출, 관광지가 없는 구는 0으로 변수 설정
+* [서울시 지방세 징수(구별) 통계] <https://data.seoul.go.kr/dataList/177/S/2/datasetView.do>
+-> 서울시 구별 세금 총합
+* [서울시 구별 차량 여부] <https://data.seoul.go.kr/dataList/255/S/2/datasetView.do>
+-> 서울시 구별 차량 총 합계
+* [서울시 구별 면적 및 행정동 개수] <https://data.seoul.go.kr/dataList/412/S/2/datasetView.do> 
+-> 인구 데이터를 사용해 면적당 인구비율 추출
+* [공무원 1인당 담당 인구] <https://data.seoul.go.kr/dataList/294/S/2/datasetView.do>
+-> 서울시 구별 공무원 1인당 담당인구
+* [서울시 주민등록인구 통계(나이별)] <https://data.seoul.go.kr/dataList/10718/S/2/datasetView.do>
+-> 10세 단위로 나누어 연령대별 인구 추출
+* [서울시 도시가스 이용현황] <https://data.seoul.go.kr/dataList/125/S/2/datasetView.do>
+-> 도시가스 이용현황 중 가정용 합계 추출
+* [서울시 석유류 소비량] <https://data.seoul.go.kr/dataList/10789/S/2/datasetView.do>
+-> 구별 석유류 사용량 합계 추출
+* [서울시 사업체 현황(산업대분류별/동별) 통계] <https://data.seoul.go.kr/dataList/104/S/2/datasetView.do>
+-> 여러 산업체 중 도소매업/숙박 및 음식점업 선택
+* [폐기물 배출량] <https://www.recycling-info.or.kr/rrs/stat/envStatList.do?menuNo=M13020201>
+-> 가정생활 폐기물 발생량을 중점으로 2014년부터 2019년까지 y변수 추출
 
 
 
