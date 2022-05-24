@@ -2,21 +2,23 @@
 
 2조 김원웅, 강효준, 양정열, 오손빈
 
-
-X 변수 = 자치구별 특징
+### 데이터 정보 
+* X 변수 = 자치구별 특징
 '세금 비율', '차량대수 비율', '인구(여)비율', '외국인 비율', '면적 비율',
 '0대 비율', '10대 비율', '20대 비율', '30대 비율', '40대 비율', '50대 비율', '60대 비율',
 '70대 비율', '80대 비율', '90대 비율', '100대 비율', '도소매 종사자 비율', '숙박 및 음식점 비율',
 '도시가스 비율', '석유 비율', '공무원 1인당 담당인구', '관광지당 관광객', '흡연율'
 
 
-y변수 = '가정생활 폐기물 비율'
+* y변수 = '가정생활 폐기물 비율'
 
 
-garbage_data.csv.xlsx - 수집한 데이터와 그 데이터를 가지고 비율로 변환한 데이터들<br>
-trial_error.ipynb - 비율로 변환하기 전의 모델과 여러가지 시도<br>
-garbage_regression_code.ipynb - 최종 모델 <br>
-EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
+
+### 파일 정보
+* garbage_data.csv.xlsx - 수집한 데이터와 그 데이터를 가지고 비율로 변환한 데이터들<br>
+* trial_error.ipynb - 비율로 변환하기 전의 모델과 여러가지 시도<br>
+* garbage_regression_code.ipynb - 최종 모델 <br>
+* EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
 
 
 ### 분석 목적 및 배경
@@ -74,6 +76,53 @@ EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
 -> 여러 산업체 중 도소매업/숙박 및 음식점업 선택
 * [폐기물 배출량] <https://www.recycling-info.or.kr/rrs/stat/envStatList.do?menuNo=M13020201>
 -> 가정생활 폐기물 발생량을 중점으로 2014년부터 2019년까지 y변수 추출
+
+
+
+### 분석 과정
+
+#### Trial and Error 1
+
+* 각 feature를 인구 대비 비율로 설정하지 않고 원래 데이터 숫자대로 분석, feature 별 상관분석하지않음.
+-> R-square 값이 너무 낮게 나옴
+* k-means, DBSCAN 등의 clustering 진행
+-> clustering에서 유의미한 분석 결과를 얻을 수 없다고 판단, clustering은 이후 진행하지 않음
+
+#### Trial and Error 2
+
+* PCA 후 Regression 진행
+-> PCA 했을 경우 성능이 좋지 않고, 가설로 선정한 feature를 뺄 경우 가설 검증이 불가능하기 때문에 PCA로 feature를 빼는 건 옳지 않다고 판단, 이후 모델에서는 PCA를 사용하지 않음. (이후 상관성 분석을 이용해 불필요한 feature를 제외하는 방식으로 진행하였다)
+
+#### Trial and Error 3
+
+* PCA를 하지 않고 Regression에서 Ridge와 Lasso 둘 다 사용해보고 hyperparameter를 바꿔가며 다양한 시도 진행
+-> 두 방법 모두 R-square 값이 높지 않음, 이후 분석에서는 모든 데이터셋의 숫자를 인구 대비 비율로 변환
+
+### 분석 진행
+
+#### Dataset
+
+![image](https://user-images.githubusercontent.com/100409757/170096094-ec0f46df-805d-473f-b436-232e96e27045.png)
+
+
+모든 데이터를 인구별 비율로 설정 -> 구별 인구 합은 feature에서 제외
+
+#### EDA
+
+![image](https://user-images.githubusercontent.com/100409757/170095637-eb460b27-5d1a-4ad7-a247-a5462d94a183.png)
+
+#### Correlation을 이용한 Preprocessing
+
+![image](https://user-images.githubusercontent.com/100409757/170095889-4ada5155-f6a2-4f6d-ada3-d6dac678ed83.png)
+* x 변수 중 '숙박 및 음식점 비율'과 '도소매 종사자 비율'이 상관성이 높고 같은 의미를 공유하고 있다고 판단 -> 제거
+
+* x 변수 중 '세금' 또한 '도소매 종사자'와 높은 상관성을 갖기 때문에 제거
+
+####  Data split, scaling, modeling
+
+* 2014년부터 2018년까지의 데이터를 train data로, 2019년의 데이터를 test data로 설정
+* Standard Scaler를 이용해 data scaling
+* Linear Regression을 이용해 Modeling
 
 
 
