@@ -1,18 +1,18 @@
 # 2022_DM_Project
 
 2조 김원웅, 강효준, 양정열, 오손빈
-
+<br>
+<br>
 ### 데이터 정보 
 * X 변수 = 자치구별 특징
 '세금 비율', '차량대수 비율', '인구(여)비율', '외국인 비율', '면적 비율',
 '0대 비율', '10대 비율', '20대 비율', '30대 비율', '40대 비율', '50대 비율', '60대 비율',
 '70대 비율', '80대 비율', '90대 비율', '100대 비율', '도소매 종사자 비율', '숙박 및 음식점 비율',
 '도시가스 비율', '석유 비율', '공무원 1인당 담당인구', '관광지당 관광객', '흡연율'
-
+<br>
 
 * y변수 = '가정생활 폐기물 비율'
-
-
+<br>
 
 ### 파일 정보
 * garbage_data.csv.xlsx - 수집한 데이터와 그 데이터를 가지고 비율로 변환한 데이터들<br>
@@ -25,10 +25,11 @@
 [쓰레기 대란 예고 기사] <https://www.yna.co.kr/view/AKR20210719145400501> 
 
 -> Regression을 이용해 가정생활폐기물 양에 많은 영향을 주는 요인을 분석하고 이를 줄이기 위한 방안 제시, 폐기물 양 예측 모델을 통해 다음해 양 예측, 줄이기 위한 제도 제안
-
-
+<br>
+<br>
 
 ### 데이터 수집
+<br>
 
 #### 선행 연구
 
@@ -77,7 +78,7 @@
 * [폐기물 배출량] <https://www.recycling-info.or.kr/rrs/stat/envStatList.do?menuNo=M13020201>
 -> 가정생활 폐기물 발생량을 중점으로 2014년부터 2019년까지 y변수 추출
 
-
+<br>
 
 ### 분석 과정
 
@@ -97,23 +98,24 @@
 
 * PCA를 하지 않고 Regression에서 Ridge와 Lasso 둘 다 사용해보고 hyperparameter를 바꿔가며 다양한 시도 진행
 -> 두 방법 모두 R-square 값이 높지 않음, 이후 분석에서는 모든 데이터셋의 숫자를 인구 대비 비율로 변환
+<br>
 
 ### 분석 진행
 
 #### Dataset
 
-![image](https://user-images.githubusercontent.com/100409757/170096094-ec0f46df-805d-473f-b436-232e96e27045.png)
+<img src=https://user-images.githubusercontent.com/100409757/170096094-ec0f46df-805d-473f-b436-232e96e27045.png width=600 height=400>
 
 
 모든 데이터를 인구별 비율로 설정 -> 구별 인구 합은 feature에서 제외
 
 #### EDA
 
-![image](https://user-images.githubusercontent.com/100409757/170095637-eb460b27-5d1a-4ad7-a247-a5462d94a183.png)
+<img src=https://user-images.githubusercontent.com/100409757/170095637-eb460b27-5d1a-4ad7-a247-a5462d94a183.png width=800 height=400>
 
 #### Correlation을 이용한 Preprocessing
 
-![image](https://user-images.githubusercontent.com/100409757/170095889-4ada5155-f6a2-4f6d-ada3-d6dac678ed83.png)
+<img src=https://user-images.githubusercontent.com/100409757/170095889-4ada5155-f6a2-4f6d-ada3-d6dac678ed83.png width=600 height=600>
 * x 변수 중 '숙박 및 음식점 비율'과 '도소매 종사자 비율'이 상관성이 높고 같은 의미를 공유하고 있다고 판단 -> 제거
 
 * x 변수 중 '세금' 또한 '도소매 종사자'와 높은 상관성을 갖기 때문에 제거
@@ -123,6 +125,30 @@
 * 2014년부터 2018년까지의 데이터를 train data로, 2019년의 데이터를 test data로 설정
 * Standard Scaler를 이용해 data scaling
 * Linear Regression을 이용해 Modeling
+
+#### Model Performance
+
+<img src=https://user-images.githubusercontent.com/100409757/170096734-1ed6431a-54da-47bc-8601-c08e1de762f9.png width=600 height=400>
+
+#### 예측 모델 시각화
+
+<img src=https://user-images.githubusercontent.com/100409757/170096787-1f8f5873-3c73-4f65-a673-de8b038e4694.png width=600 height=400>
+
+####
+
+<img src=https://user-images.githubusercontent.com/100409757/170096827-7bd16b21-d32e-4b6e-ad9a-41e637675719.png width=600 height=400>
+
+* 전체 feature 분석에서 p-value가 0.05보다 낮은 동시에 vif가 10보다 높은 값 4개 선정
+-> **'외국인 비율', '면적 비율', '도소매 종사자 비율', '석유 비율'**
+
+#### 위에서 선택한 4가지 feature를 이용해 다시 모델링
+
+<img src=https://user-images.githubusercontent.com/100409757/170097295-26c887f1-94ad-45e6-af37-cc22970e79de.png width=600 height=400>
+
+#### 4가지 최종 feature를 활용한 모델의 performance 및 summary
+
+<img src=https://user-images.githubusercontent.com/100409757/170097378-c1a6b4ba-baae-4ae4-9d4f-18f79573b8f1.png width=800 height=400>
+
 
 
 
