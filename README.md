@@ -9,3 +9,4 @@ trial and error가 많았지만 최종적으로 선택한 모델에 대해서 �
 rate = pd.read_excel("garbage_rate_data.csv")
 rate.head()
 ```
+https://github.com/gywnsrkd/2022_DM_Project/issues/1#issue-1246235049
