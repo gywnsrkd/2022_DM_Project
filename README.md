@@ -11,9 +11,9 @@ y변수 = '가정생활 폐기물 비율'
 
 선형회귀모형을 구해서 유의미한 변수를 추출 및 예측모델을 만듭니다.
 
-garbage_data.csv.xlsx - 수집한 데이터와 그 데이터를 가지고 비율로 변환한 데이터들
-trial_error.ipynb - 비율로 변환하기 전의 모델과 여러가지 시도
-garbage_regression_code.ipynb - 최종 모델 
-EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화
+garbage_data.csv.xlsx - 수집한 데이터와 그 데이터를 가지고 비율로 변환한 데이터들<br>
+trial_error.ipynb - 비율로 변환하기 전의 모델과 여러가지 시도<br>
+garbage_regression_code.ipynb - 최종 모델 <br>
+EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
 
 팀원 == 김원웅, 강효준, 양정열, 오손빈
