@@ -19,17 +19,15 @@
 * trial_error.ipynb - 비율로 변환하기 전의 모델과 여러가지 시도<br>
 * garbage_regression_code.ipynb - 최종 모델 <br>
 * EDA.ipynb - 유의미한 변수로 선정한 x변수들의 시각화<br>
-
+<br>
+<br>
 
 ### 분석 목적 및 배경
 [쓰레기 대란 예고 기사] <https://www.yna.co.kr/view/AKR20210719145400501> 
 
 -> Regression을 이용해 가정생활폐기물 양에 많은 영향을 주는 요인을 분석하고 이를 줄이기 위한 방안 제시, 폐기물 양 예측 모델을 통해 다음해 양 예측, 줄이기 위한 제도 제안
-<br>
-<br>
 
 ### 데이터 수집
-<br>
 
 #### 선행 연구
 
